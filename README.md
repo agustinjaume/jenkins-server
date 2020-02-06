@@ -34,6 +34,7 @@ Jenkins no hace magia, necesita de otras herramientas o lenguajes que utilizan e
 
 En el archivo Dockerfile realizaremos las mejoras oportunas para ahorrarnos tiempo, si tenemos que repetir el proceso.
 
+```
 RUN apt-get update && apt-get upgrade -y && apt-get install -y git curl && curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | bash && apt-get install -y git-lfs && git lfs install && rm -rf /var/lib/apt/lists/*
 RUN apt-get update
 RUN apt-get install -y  python3
@@ -47,18 +48,21 @@ RUN pip3 install ansible==2.5.0
 RUN pip3 install hvac
 RUN pip3 install boto
 RUN echo "root:root" | chpasswd
-
+```
 
 
 # Creacion de la imagen con las modificaciones 
-
+```
 docker build -t "jenkins:v3" .
+```
 
 # Desplegar un contenedor con Jenkins server con la imagen previamente desplegada
 
 Ejemplos de como desplegar dos servidores con configuraciones separadas.
+```
 docker run -d -v jenkins_home:/var/jenkins_home -p 8080:8080 -p 50000:50000 jenkins:v3
 docker run -d -v jenkins_home_v4:/var/jenkins_home -p 8080:8080 -p 50000:50000 jenkins:v4
+```
 
 * Recordemos los volumenes nos mantienen los ficheros que contienen de forma persistente.
 docker volume ls   --->  para listar los volumenes 
@@ -79,14 +83,19 @@ docker volume inspect my-vol   --> listar caracteristicas de cada volumen
 
 Accedemos via http al contenedor recien instalado y por unica vez nos pedira la contraseña 
 que se encuentra en: 
+```
 cat /var/lib/jenkins/secrets/initialAdminPassword
+```
 
 ## Creamos el usuario admin
 
 Completamos formulario con datos del nuevo usuario 
 
 # Accedemos al contenedor 
+
+```
 docker exec -it c088 /bin/bash
+```
 
 
 # ----------------------------------------------------
