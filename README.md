@@ -20,7 +20,7 @@ contando con un panel donde podremos ver el estado de cada una y mejorarla.
 
 Como recomendacion inicial, en caso de realizar una POC o cuando su utilizacion no requiera de tanto procesamiento seguir el ejemplo de este repositorio nos alcanzara.
 
-En caso de tener gran cantidad de procesamiento, picos de carga, multiples test de cada Jobs, lo recomendable seria tener un master y varios nodos para el procesamiento.
+En caso de tener gran ∫cantidad de procesamiento, picos de carga, multiples test de cada Jobs, lo recomendable seria tener un master y varios nodos para el procesamiento.
 
 
 # Integración de herramientas y lenguajes que utilizara Jenkins.
@@ -94,7 +94,7 @@ docker volume inspect my-vol   --> listar caracteristicas de cada volumen
 Accedemos via http al contenedor recien instalado y por unica vez nos pedira la contraseña 
 que se encuentra en: 
 ```
-cat /var/lib/jenkins/secrets/initialAdminPassword
+cat /var/jenkins_home/secrets/initialAdminPassword
 ```
 
 ## Creamos el usuario admin
