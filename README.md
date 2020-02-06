@@ -16,6 +16,11 @@ manual, automatica o semi automatica contemplando por ejemplo los siguientes esc
 Para un Devops poder contar con una herramienta como Jenkins es vital para centralizar todas las tareas programadas o manuales en un solo sitio, 
 contando con un panel donde podremos ver el estado de cada una y mejorarla.
 
+# Esquema logico de la infrastructura de Jenkins
+
+Como recomendacion inicial, en caso de realizar una POC o cuando su utilizacion no requiera de tanto procesamiento seguir el ejemplo de este repositorio nos alcanzara.
+En caso de tener gran  cantidad de procesamiento, picos de carga, multiples test de cada Jobs, lo recomendable seria tener un master y varios nodos.
+∫ 
 
 # Otras Herramientas y lenguajes que utilizara un Devops.
 
@@ -107,10 +112,14 @@ Cambiamos de usuario para mejoras sobre
 ```
 su root  --> root
 ```
-# apt install 
+Una vez dentro del contenedor con el usuario root podremos instalar paquetes que sepamos que utilizaremos en la mayoria de los casos 
+y que no requieras diferentes version, como se nos puede dar el caso con Ansible que resolveremos mas adelante con entornos virtuales.
 
+
+
+```
 apt install net-tools
-
+```
 
 
 
