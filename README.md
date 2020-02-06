@@ -19,13 +19,14 @@ contando con un panel donde podremos ver el estado de cada una y mejorarla.
 # Esquema logico de la infrastructura de Jenkins
 
 Como recomendacion inicial, en caso de realizar una POC o cuando su utilizacion no requiera de tanto procesamiento seguir el ejemplo de este repositorio nos alcanzara.
-En caso de tener gran  cantidad de procesamiento, picos de carga, multiples test de cada Jobs, lo recomendable seria tener un master y varios nodos.
-∫ 
 
-# Otras Herramientas y lenguajes que utilizara un Devops.
+En caso de tener gran cantidad de procesamiento, picos de carga, multiples test de cada Jobs, lo recomendable seria tener un master y varios nodos para el procesamiento.
 
-Jenkins no hace magia, necesita de otras herramientas o lenguajes que utilizan en las empresas para dar lugar a 
-la Integración, Entrega y Despliegue coninuo como puede ser :
+
+# Integración de herramientas y lenguajes que utilizara Jenkins.
+
+Jenkins no hace magia por si solo, necesita de otras herramientas o lenguajes para obtener su maximo rendimiento funcional en la 
+Integración, Entrega y Despliegue coninuo como pueden ser :
 
 - Github, Gitlab, Nexus
 - Ansible, Terraform
