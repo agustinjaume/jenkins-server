@@ -98,12 +98,14 @@ Completamos formulario con datos del nuevo usuario
 docker exec -it c088 /bin/bash
 ```
 
-
-# ----------------------------------------------------
 # Administracion por terminal 
-# Cambiamos de usuario para mejoras sobre 
+
+Cambiamos de usuario para mejoras sobre 
+```
 su root  --> root
+```
 # apt install 
+
 apt install net-tools
 
 
