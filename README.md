@@ -12,6 +12,7 @@ Jenkins es un sistema que nos permite deplegar componentes de forma manual, auto
 Para un Devops poder contar con una herramienta como Jenkins es vital para centralizar todas las tareas programadas o manuales en un solo sitio, contando con un panel donde podremos ver el estado de cada una y mejorarla.
 
 # Objetivo 
+
   En este repositorio encontraremos una copia del repositorio oficial de Jenkins donde personalizaremos la instalacion del mismo para poder reutilizar la misma a futura y aplicar mejoras segun las necesidades.
 
 # Otras Herramientas y lenguajes que utilizara un Devops.
