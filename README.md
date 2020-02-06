@@ -1,29 +1,32 @@
-# jenkins-server
-Jenkins-server-custom
+# Objetivo 
+
+En este repositorio encontraremos una copia del repositorio oficial de Jenkins donde,
+ personalizaremos la instalacion del mismo para poder reutilizar la misma a futura y aplicar mejoras segun las necesidades.
+
 
 # Que es Jenkins y que tan importante es para un Devops.
 
-Jenkins es un sistema que nos permite deplegar componentes de forma manual, automatica o semi automatica contemplando por ejemplo los siguientes escenarios.
+Jenkins es un sistema que nos permite deplegar componentes de forma
+manual, automatica o semi automatica contemplando por ejemplo los siguientes escenarios.
 
 - Programar acciones en el tiempo
 - Activacion por script 
 - Cambios en un repositorio 
 
-Para un Devops poder contar con una herramienta como Jenkins es vital para centralizar todas las tareas programadas o manuales en un solo sitio, contando con un panel donde podremos ver el estado de cada una y mejorarla.
+Para un Devops poder contar con una herramienta como Jenkins es vital para centralizar todas las tareas programadas o manuales en un solo sitio, 
+contando con un panel donde podremos ver el estado de cada una y mejorarla.
 
-# Objetivo 
-
-  En este repositorio encontraremos una copia del repositorio oficial de Jenkins donde personalizaremos la instalacion del mismo para poder reutilizar la misma a futura y aplicar mejoras segun las necesidades.
 
 # Otras Herramientas y lenguajes que utilizara un Devops.
 
-Jenkins no hace magia, necesita de otras herramientas o lenguajes que utilizan en la empresa para poder trabajar como puede ser :
+Jenkins no hace magia, necesita de otras herramientas o lenguajes que utilizan en las empresas para dar lugar a 
+la Integración, Entrega y Despliegue coninuo como puede ser :
 
 - Github, Gitlab, Nexus
 - Ansible, Terraform
 - Vault, Ldap
 - Conexiones a recursos cloud
-- Python , bash, grooby
+- Python, Bash, Grooby
 
 # Fuente de de Jenkins: 
     https://hub.docker.com/r/jenkins/jenkins/
