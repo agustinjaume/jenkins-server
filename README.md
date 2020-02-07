@@ -8,7 +8,7 @@ En este repositorio encontraremos una copia del repositorio oficial de Jenkins d
 Estará compuesto por una lista de temas en videos cortos que nos permitirán sacar el mayor partido a sus funcionalidades.
 La idea es, para ponernos en  contexto un día típico dentro del equipo devops al cual se le asigna tareas diarias y temas de mejora como ser desplegar un servidor de Jenkins para migrar todos los automatismos desde el antiguo sistema de despliegues por motivos de costos y unificación de criterios en los pipelines.
 
-1_ Desplegar un servidor, de ser posible customizado con las librerías o paquetes que  que se utilizan en la mayoría de los proyectos
+1_ Desplegar un servidor, de ser posible customizado con las librerías o paquetes que  que se utilizan en la mayoría de los proyectos. ( el contenido ya modificado esta en la carpeta /docker del repositorio )
 
 
 2_ Opciones de como encarar la nueva implementación:
