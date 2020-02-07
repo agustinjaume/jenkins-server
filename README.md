@@ -3,6 +3,49 @@
 En este repositorio encontraremos una copia del repositorio oficial de Jenkins donde,
  personalizaremos la instalacion del mismo para poder reutilizar la misma a futura y aplicar mejoras segun las necesidades.
 
+# Temario
+
+Estará compuesto por una lista de temas en videos cortos que nos permitirán sacar el mayor partido a sus funcionalidades.
+La idea es, para ponernos en  contexto un día típico dentro del equipo devops al cual se le asigna tareas diarias y temas de mejora como ser desplegar un servidor de Jenkins para migrar todos los automatismos desde el antiguo sistema de despliegues por motivos de costos y unificación de criterios en los pipelines.
+
+1_ Desplegar un servidor, de ser posible customizado con las librerías o paquetes que  que se utilizan en la mayoría de los proyectos
+
+
+2_ Opciones de como encarar la nueva implementación:
+    2_a   Jobs con formulario
+    2_b   Jobs con jenkinfile declarativos 
+    2_c   Jobs con jenkinsfile desde repositorio
+    2_d  Jobs con groovy
+
+
+3_ Demostrar que podremos conectarnos a todos los recursos involucrados en cada despliegue
+
+
+4_ Conexion a cloud ( AWS, AZURE o GOOGLE) 
+
+
+5_ Trabajar con repositorios git que estéis utilizando en vuestra empresa.
+
+
+6_ Poder seleccionar la rama a desplegar de cada repositorio.
+
+
+7_ Desplegar diferentes versiones de ansible debido la diferencia histórica de código que no fue actualizado.
+
+
+8_ Despliegues en servidores on-premise y en instancias cloud
+
+
+9_ Despliegues por calendario
+
+
+10_ Despliegues por hooks
+
+
+11_ Despliegues con Jenkinsfile desde repositorio ( ventajas de este método )
+
+
+12_ Despliegues con Groovy
 
 # Que es Jenkins y que tan importante es para un Devops.
 
@@ -71,20 +114,21 @@ RUN echo "root:root" | chpasswd
 
 # Creacion de la imagen con las modificaciones 
 ```
-docker build -t "jenkins:v3" .
+docker build -t "jenkins:vX" .
 ```
 
 # Desplegar un contenedor con Jenkins server con la imagen previamente desplegada
 
 Ejemplos de como desplegar dos servidores con configuraciones separadas.
 ```
-docker run -d -v jenkins_home:/var/jenkins_home -p 8080:8080 -p 50000:50000 jenkins:v3
+docker run -d -v jenkins_home_vX:/var/jenkins_home -p 8080:8080 -p 50000:50000 jenkins:vX
 docker run -d -v jenkins_home_v4:/var/jenkins_home -p 8080:8080 -p 50000:50000 jenkins:v4
 ```
 
 * Recordemos los volumenes nos mantienen los ficheros que contienen de forma persistente.
 docker volume ls   --->  para listar los volumenes 
 docker volume inspect my-vol   --> listar caracteristicas de cada volumen 
+```
 [
     {
         "Driver": "local",
@@ -95,12 +139,13 @@ docker volume inspect my-vol   --> listar caracteristicas de cada volumen
         "Scope": "local"
     }
 ]
-
+```
 
 # Accedemos por http
 
 Accedemos via http al contenedor recien instalado y por unica vez nos pedira la contraseña 
 que se encuentra en: 
+
 ```
 cat /var/jenkins_home/secrets/initialAdminPassword
 ```
@@ -123,8 +168,6 @@ su root  --> root
 ```
 Una vez dentro del contenedor con el usuario root podremos instalar paquetes que sepamos que utilizaremos en la mayoria de los casos 
 y que no requieras diferentes version, como se nos puede dar el caso con Ansible que resolveremos mas adelante con entornos virtuales.
-
-
 
 ```
 apt install net-tools
