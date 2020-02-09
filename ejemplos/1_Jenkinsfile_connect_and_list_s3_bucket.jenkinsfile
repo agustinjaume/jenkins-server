@@ -15,6 +15,7 @@ stages{
         sh 'aws --version' 
         sh 'aws s3 ls' 
     } }
+} 
    stage('Unit-test') {
       steps { 
         sh 'echo "pruebas unitarias"' 
@@ -27,6 +28,5 @@ stages{
       steps { 
         sh 'echo  "docker push image docker"' 
    } }
-} 
 } 
 }
