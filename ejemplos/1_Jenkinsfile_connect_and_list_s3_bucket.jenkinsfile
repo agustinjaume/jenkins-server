@@ -4,7 +4,7 @@ environment {
    AWS_DEFAULT_REGION = 'eu-west-1' 
 }
 stages{ 
-    stage('deploy') {
+   stage('Connect to resources and copy code') {
       steps { withCredentials([[
         $class: 'AmazonWebServicesCredentialsBinding', 
         credentialsId: 'aws-jenkins-server', 
@@ -14,8 +14,19 @@ stages{
         {
         sh 'aws --version' 
         sh 'aws s3 ls' 
-       // sh 'aws ec2 describe-instances'
     } }
+   stage('Unit-test') {
+      steps { 
+        sh 'echo "pruebas unitarias"' 
+   } }
+   stage('Docker build') {
+      steps { 
+        sh 'echo "docker build .."' 
+   } }
+   stage('Docker image to docker hub') {
+      steps { 
+        sh 'echo  "docker push image docker"' 
+   } }
 } 
 } 
 }
