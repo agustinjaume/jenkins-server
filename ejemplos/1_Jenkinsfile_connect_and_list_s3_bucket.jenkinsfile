@@ -1,0 +1,21 @@
+pipeline {
+agent any 
+environment {
+   AWS_DEFAULT_REGION = 'eu-west-1' 
+}
+stages{ 
+    stage('deploy') {
+      steps { withCredentials([[
+        $class: 'AmazonWebServicesCredentialsBinding', 
+        credentialsId: 'aws-jenkins-server', 
+        accessKeyVariable: 'AWS_ACCESS_KEY_ID', 
+        secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
+        ]]) 
+        {
+        sh 'aws --version' 
+        sh 'aws s3 ls' 
+       // sh 'aws ec2 describe-instances'
+    } }
+} 
+} 
+}
