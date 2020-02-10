@@ -2,6 +2,9 @@
 
 En este caso nos conectaremos utilizando pipelines declarativos, credenciales y el cliente aws que se encuentra en el servidor Jenkins.
 
+
+![Texto alternativo](imagenes/diapositivas-4-aws.png)
+
 ## Repasamos conceptos
 
 ### Documentacion oficial : https://jenkins.io/doc/book/pipeline/syntax/
@@ -9,22 +12,23 @@ En este caso nos conectaremos utilizando pipelines declarativos, credenciales y 
 ### Ejemplo de estructura tipo
 
 
-pipeline {       // Identificamos donde comienza y donde termina nuestro pipeline
+pipeline {                        // Identificamos donde comienza y donde termina nuestro pipeline
 
-agent any       //  Especificamos en que nodos disponibles queremos ejecutarlo por ejemplo docker { image 'node:7-alpine' }
+agent any                         //  Especificamos en que nodos disponibles queremos ejecutarlo por ejemplo docker { image 'node:7-alpine' }
 
-environment {   // configuración de variables de entorno 
+environment {                     // configuración de variables de entorno 
 }
 
-stages{             // Bloque donde se definen una serie de estados a realizar dentro del pipeline.   
+stages{                           // Bloque donde se definen una serie de estados a realizar dentro del pipeline.   
 
-    stage('deploy') {  // Bloque que permite segmentar en tareas nuestro objetivo, si falla alguna el stage se mostrara en rojo 
-      steps {       // Tareas a realizar 
+    stage('deploy') {             // Bloque que permite segmentar en tareas nuestro objetivo, si falla alguna el stage se mostrara en rojo 
+      steps {                     // Tareas a realizar 
         
-        }          //  fin de steps
-      }            //  fin de stage
-    }              //  fin de stages
-}                  //  fin de pipeline
+        }                         //  fin de steps
+      }                           //  fin de stage
+    }                             //  fin de stages
+post { always { echo 'hola!' } }  //  ocurre siempre, ya sea con resultado always, success o failure
+}                                 //  fin de pipeline
 
 
 
@@ -62,7 +66,7 @@ Desde un nuevo Job creado como "Pipelines" lo llamamos segun la siguiente config
 
  ## 2_d   Pipelines con groovy
 
-
+NOTA: Groovy es un derivado de Java, por lo que tiene la capacidad de Java para detectar (manejar) excepciones de ejecución no previstas por el código de programación.
 
 
 
