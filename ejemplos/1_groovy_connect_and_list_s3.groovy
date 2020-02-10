@@ -14,8 +14,8 @@ node {
             secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
             ]]) 
             {
-            aws --version 
-            aws s3 ls
+            sh 'aws --version' 
+            sh 'aws s3 ls'
             } 
             }  // fin step
 
