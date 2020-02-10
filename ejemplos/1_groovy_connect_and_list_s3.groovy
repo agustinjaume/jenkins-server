@@ -7,7 +7,7 @@ node {
            if (i==0)
            {
 
-            step { withCredentials([[
+            withCredentials([[
             $class: 'AmazonWebServicesCredentialsBinding', 
             credentialsId: 'aws-jenkins-server', 
             accessKeyVariable: 'AWS_ACCESS_KEY_ID', 
@@ -17,8 +17,6 @@ node {
             sh 'aws --version' 
             sh 'aws s3 ls'
             } 
-            }  // fin step
-
            }
            else {
                build 'Declarative pipeline'
