@@ -18,10 +18,10 @@ node {
             sh 'aws s3 ls'
             } 
            } // fin script
+
            }
            else {
-               build 'Declarative pipeline'
-               echo 'Running on Stage #1'
+            print ' Termino los 2 stages'
            }
-      }
-}
+      }  // fin for 
+}  // fin node 
