@@ -1,0 +1,32 @@
+pipeline {
+agent any 
+environment {
+   AWS_DEFAULT_REGION = 'eu-west-1' 
+}
+stages{ 
+   stage('Connect to resources and copy code') {
+      steps { withCredentials([[
+        $class: 'AmazonWebServicesCredentialsBinding', 
+        credentialsId: 'aws-jenkins-server', 
+        accessKeyVariable: 'AWS_ACCESS_KEY_ID', 
+        secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
+        ]]) 
+        {
+        sh 'aws --version' 
+        sh 'aws s3 ls' 
+    } }
+} 
+   stage('Unit-test') {
+      steps { 
+        sh 'echo "pruebas unitarias"' 
+   } }
+   stage('Docker build') {
+      steps { 
+        sh 'echo "docker build .."' 
+   } }
+   stage('Docker image to docker hub') {
+      steps { 
+        sh 'echo  "docker push image docker"' 
+   } }
+} 
+}

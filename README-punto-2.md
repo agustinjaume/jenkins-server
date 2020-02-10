@@ -48,8 +48,30 @@ aws s3 ls
 ```
 
 ## 2_b   Pipelines con jenkinsfile declarativos 
-          Documentación oficial:  https://jenkins.io/doc/book/pipeline/syntax/ 
 
+Documentación oficial:  https://jenkins.io/doc/book/pipeline/syntax/ 
+
+
+```
+pipeline {       // Identificamos donde comienza y donde termina nuestro pipeline
+
+agent any       //  Especificamos en que nodos disponibles queremos ejecutarlo por ejemplo docker { image 'node:7-alpine' }
+
+environment {   // configuración de variables de entorno 
+}
+
+stages{             // Bloque donde se definen una serie de estados a realizar dentro del pipeline.   
+
+    stage('deploy') {  // Bloque que permite segmentar en tareas nuestro objetivo, si falla alguna el stage se mostrara en rojo 
+      steps {       // Tareas a realizar 
+        
+        }          //  fin de steps
+      }            //  fin de stage
+    }              //  fin de stages
+}                  //  fin de pipeline
+```
+
+## Caso practico 
 ```
 pipeline {
 agent any 
@@ -80,8 +102,12 @@ stages{
 Subimos el pipeline anterior dentro de un archivo llamado '1_Jenkinsfile_connect_and_list_s3_bucket.jenkinsfile' 
 Desde un nuevo Job creado como "Pipelines" lo llamamos segun la siguiente configuracion:
 
+![Texto alternativo](imagenes/jenkins-pipeline-desde-repositorio.jpeg)
+
 
  ## 2_d   Pipelines con groovy
+
+ 
 
 
 
