@@ -64,9 +64,7 @@ Subimos el pipeline anterior dentro de un archivo llamado '1_Jenkinsfile_connect
 Desde un nuevo Job creado como "Pipelines" lo llamamos segun la siguiente configuracion:
 
 
- ## 2_d   Pipelines con groovy
 
-NOTA: Groovy es un derivado de Java, por lo que tiene la capacidad de Java para detectar (manejar) excepciones de ejecución no previstas por el código de programación.
 
 
 

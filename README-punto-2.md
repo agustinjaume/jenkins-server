@@ -107,7 +107,40 @@ Desde un nuevo Job creado como "Pipelines" lo llamamos segun la siguiente config
 
  ## 2_d   Pipelines con groovy
 
- 
+ ```
+ #!groovy
+
+node {
+      for (i=0; i<2; i++) { 
+           stage "Stage #"+i
+           print 'Hello, world !'
+           if (i==0)
+           {
+            script {
+            withCredentials([[
+            $class: 'AmazonWebServicesCredentialsBinding', 
+            credentialsId: 'aws-jenkins-server', 
+            accessKeyVariable: 'AWS_ACCESS_KEY_ID', 
+            secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
+            ]]) 
+            {
+            sh 'aws --version' 
+            sh 'aws s3 ls'
+            } 
+           } // fin script
+
+           }
+           else {
+            print ' Termino los 2 stages'
+           }
+      }  // fin for 
+}  // fin node 
+```
+
+### Comparación de codigos.
+
+
+![Texto alternativo](imagenes/diapositivas-2--tecnicapresentacion.png)
 
 
 
