@@ -26,7 +26,7 @@ Teniendo en cuenta dicho panorama y para entenderlo mejor  vamos a quitarle comp
     - ansible 2.5
     - boto
 
-- Deploy de nuestra aplicacion desde local
+- Deploy de nuestra aplicación desde local
 
 ```
 ansible-playbook playbooks/miaplicacion/main.yml -i inventory/pre/
