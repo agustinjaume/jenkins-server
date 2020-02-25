@@ -49,7 +49,7 @@ deactivate
 A día de hoy tememos un mínimo de dos opciones disponibles que se me vienen a la cabeza para utilizar en Jenkins.
 
 -  Opción rápida, utilizar el plugin de Jenkins https://plugins.jenkins.io/pyenv-pipeline/ . 
--  Opción recomendada, realizar el desarrollo por código para no perder el control, ni costumbre sobre los códigos .
+-  Opción recomendada, realizar el desarrollo por código para no perder el control del mismo y porque reutilizaremos el mismo .
 
 ## 7_2 Pasamos variables seleccionamos el entorno.
 
@@ -67,7 +67,7 @@ pipeline {
     agent any
     parameters { 
       choice(name: 'Entornos', choices: ['dev', 'pre', 'pro'], description: 'Seleccione el entorno a utilizar')
-      choice(name: 'VersionAnsible', choices: ['2.5', '2.7', '2.9'], description: 'Seleccione la versión de Ansivle a instalar en el entorno virtual ') 
+      choice(name: 'VersionAnsible', choices: ['2.5.0', '2.7', '2.9.5'], description: 'Seleccione la versión de Ansivle a instalar en el entorno virtual ') 
     }
     stages {
         stage('Impresión de variables seleccionadas') {
