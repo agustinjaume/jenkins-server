@@ -84,7 +84,6 @@ pipeline {
 
 ## 7_2 Creamos el entorno virtual e instalamos Ansible según la version que pasamos por parámetro.
        
-![Texto alternativo](imagenes/jenkins_formulario.png)    
 
 Pipeline final para este video   
 
