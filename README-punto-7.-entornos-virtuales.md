@@ -3,23 +3,25 @@
 ## 7_ Pipeline con virtualenv y Ansible en sus diferente versiones 
 
 En este video veremos como realizar una tarea tan demandada como ser trabajar con entornos virtuales durante es despliegue de una aplicación.
+Durante el automatismo, crear entornos virtuales sera la solución por los beneficios propios de abstraernos con una capa de paquetería con las versiones que necesitamos y pensaremos que nuestro trabajo esta terminado cuando se realiza el despliegue correctamente.
+Pero tenemos que recordar que durante un automatismo este tipo de tareas se repetirá con cada ejecución y la gestión de un entorno virtual  de trabajo nos penalizara en tiempo.
 
-Esta acción la podemos realizar de forma estática y cada despliegue sera un mundo diferente o de forma dinámica que sera la propuesta que les voy a mostrar, para automatizar pipelines de tal forma que nos permite desplegar componentes con diferentes versiones de tecnologías o librerías. 
+Escenario ideal:
+- Todos los componentes tendrían que ser  desplegados con lenguajes con las ultimas versiones
+- Nodos de Jenkins en las mismas condiciones.
 
-En un escenario ideal todos los componentes tendrían que ser  desplegados con lenguajes con las ultimas versiones y nodos de Jenkins en las mismas condiciones.
+![Texto alternativo](imagenes/7-3-propuesto.png)  
 
-![Texto alternativo](imagenes/diapositivas-7-3ENTORNOSVIRTUALES.png)  
-
-La realidad es muy posible que no lo sea y tengamos algunos de estos puntos en común:
+Escenario real:
 
 - Componentes con lenguajes en sus diferentes versiones 
 - Nodos de Jenkins con al menos una de version de cada componente
 - Necesidad de estar en conocimiento o documentación de cada componente y sus diferencias entre versiones, para que en caso de tener que realizar un cambio en el despliegue se pueda hacer en el menos tiempo posible.
 
-![Texto alternativo](imagenes/diapositivas-7-2ENTORNOSVIRTUALES.png)  
+![Texto alternativo](imagenes/7-2-real.png)  
 
 
-Teniendo en cuenta dicho panorama y para entenderlo mejor  vamos a quitarle complejidad llevando los requerimientos del automatismo a una simple lista componentes necesarios y comenzaremos a darle forma con un ejemplo: 
+Teniendo en cuenta dicho panorama y para entenderlo mejor vamos a quitarle complejidad llevando los requerimientos del automatismo a una simple lista componentes necesarios y comenzaremos a darle forma con un ejemplo: 
 
 - Requerimientos de nuestra aplicación
 
@@ -38,10 +40,10 @@ ansible-playbook playbooks/miaplicacion/main.yml -i inventory/pre/
 sudo apt-get install python python-pip virtualenv -y
 virtualenv --no-site-packages 2.5.0.prueba
 source ansible2.5.0/bin/activate
-    pip install ansible==2.5.0
-    pip install boto
-    ansible all -i localhost, -c local -m ping
-deactivate
+pip install ansible==2.5.0
+pip install boto
+# ansible-playbook playbooks/miaplicacion/main.yml -i inventory/pre/
+ansible all -i localhost, -c local -m ping
 ```
 
 ## 7_1 Opciones para utilizar entornos virtuales
@@ -61,6 +63,8 @@ Aprenderemos como crear listas de selección de variables desde pipeline declara
 
 
 ## Estilo recomendando
+
+Automatizaremos y trasformaremos la creacion de lista de variables anterior como codigo, con la opción "parameters" en el pipeline.
 
 ```
 pipeline {
