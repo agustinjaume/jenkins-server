@@ -115,6 +115,7 @@ RUN echo "root:root" | chpasswd
 # Creacion de la imagen con las modificaciones 
 ```
 docker build -t "jenkins:vX" .
+docker build -t "jenkins:v7" .
 ```
 
 # Desplegar un contenedor con Jenkins server con la imagen previamente desplegada
@@ -122,7 +123,7 @@ docker build -t "jenkins:vX" .
 Ejemplos de como desplegar dos servidores con configuraciones separadas.
 ```
 docker run -d -v jenkins_home_vX:/var/jenkins_home -p 8080:8080 -p 50000:50000 jenkins:vX
-docker run -d -v jenkins_home_v4:/var/jenkins_home -p 8080:8080 -p 50000:50000 jenkins:v4
+docker run -d -v jenkins_home_v6:/var/jenkins_home -v /var/run/docker.sock:/var/run/docker.sock -p 8080:8080 -p 50000:50000 jenkins:v7
 ```
 
 * Recordemos los volumenes nos mantienen los ficheros que contienen de forma persistente.
