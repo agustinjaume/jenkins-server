@@ -11,8 +11,6 @@ Como agregar y administrar nodos estáticos a nuestro Jenkins server.
 Aprenderemos como seleccionar los nodos ya sea por formulario o por código.
 
 
-![Texto alternativo](imagenes/diapositivas-13-nodos-13-1a-TEORIA.png)
-
 Escenario con nodos estáticos:
 Ventajas : 
 - Todos los componentes se desplegaran en nodos que estarán siempre dando servicio, por lo tanto en el mejor de los casos es inmediata la gestión.
@@ -35,6 +33,16 @@ Desventajas :
 
 ![Texto alternativo](imagenes/diapositivas-13-nodos-13-nodos-dinamicos.png)  
 
+Cotejando ambos escenarios podemos hablar el siguiente cuadro de ejes:
+
+
+![Texto alternativo](imagenes/diapositivas-13-nodos-13-1a-TEORIA.png)
+
+
+### Agregaremos 2 nodos estaticos 
+Componentes necesarios
+
+### Codigo con el que trabajaremos.
 
 ```
 pipeline {
@@ -42,7 +50,7 @@ pipeline {
     // agent { label '$NODO' }
     parameters { 
       choice(name: 'Entornos', choices: ['dev', 'pre', 'pro'], description: 'Seleccione el entorno a utilizar')
-      choice(name: 'Nodo', choices: ['ubuntu19', 'windows', 'Alpine'], description: 'Seleccione el entorno a utilizar')
+      choice(name: 'Nodo', choices: ['ubuntu19', 'windows','python.27','Alpine'], description: 'Seleccione el entorno a utilizar')
     }
     environment {
      NODO="${ Nodo }" 
