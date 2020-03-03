@@ -1,0 +1,17 @@
+pipeline {
+    agent any
+    // agent { label '$NODO' }
+    parameters { 
+      choice(name: 'Entornos', choices: ['dev', 'pre', 'pro'], description: 'Seleccione el entorno a utilizar')
+      choice(name: 'Nodo', choices: ['', 'raspberry', 'ubuntu19', 'windows','python27','alpine'], description: 'Seleccione el entorno a utilizar')
+    }
+    stages {
+        stage('Build') {
+        agent { label "${params.Nodo}" }
+            steps {
+                sh "echo Construyendo.."
+                sh "touch prueba'${params.Nodo}'.txt"
+            }
+        }
+    }
+}
