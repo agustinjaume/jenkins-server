@@ -40,9 +40,22 @@ Cotejando ambos escenarios podemos hablar el siguiente cuadro de ejes:
 
 
 ### Agregaremos 2 nodos estaticos 
-Componentes necesarios
+Componentes necesarios:
 
-### Codigo con el que trabajaremos.
+- servidores o instancias que funcionaran como nodos.
+- acceso ssh a los mismo.
+
+
+![Texto alternativo](imagenes/13-configuracion-nodo-estatico.jpeg)
+
+### Opción 1 seleccion manual de nodo en job
+
+![Texto alternativo](imagenes/13-nodos-seleccion-manual.jpeg)
+
+### Opción 2 seleccion desde codigo 
+
+
+Creamos un job con formato pipeline con el siguiente codigo.
 
 ```
 pipeline {
@@ -50,26 +63,15 @@ pipeline {
     // agent { label '$NODO' }
     parameters { 
       choice(name: 'Entornos', choices: ['dev', 'pre', 'pro'], description: 'Seleccione el entorno a utilizar')
-      choice(name: 'Nodo', choices: ['ubuntu19', 'windows','python.27','Alpine'], description: 'Seleccione el entorno a utilizar')
+      choice(name: 'Nodo', choices: ['', 'raspberry', 'ubuntu19', 'windows','python27','alpine'], description: 'Seleccione el entorno a utilizar')
     }
-    environment {
-     NODO="${ Nodo }" 
-    }
-
     stages {
         stage('Build') {
-            agent { label "$NODO" }
+        agent { label "${params.Nodo}" }
             steps {
-                echo 'Building..'
-                sh '''
-                '''
+                sh "echo Construyendo.."
+                sh "touch prueba'${params.Nodo}'.txt"
             }
-        }
-    }
-
-    post {
-        success {
-            echo 'This will run only if successful'
         }
     }
 }
