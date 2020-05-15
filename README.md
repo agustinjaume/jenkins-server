@@ -118,13 +118,6 @@ docker build -t "jenkins:vX" .
 docker build -t "jenkins:v2236" .
 ```
 
-# Push a docker hub
-```
-docker login
-docker tag efd4574e8201 aguexitoso/jenkins:v2236
-docker push  aguexitoso/jenkins:v2236
-```
-
 # Desplegar un contenedor con Jenkins server con la imagen previamente desplegada
 
 Ejemplos de como desplegar dos servidores con configuraciones separadas.
@@ -133,6 +126,10 @@ Linux
 ```
 docker run -d -v jenkins_home_vX:/var/jenkins_home -p 8080:8080 -p 50000:50000 jenkins:vX
 docker run --name jenkins -d -v jenkins_home_v2236:/var/jenkins_home -v /var/run/docker.sock:/var/run/docker.sock -p 8080:8080 -p 50000:50000 jenkins:v2236
+```
+Windows
+```
+docker run -d --name jenkins -v C:/Users/agustin/Desktop/jenkins_homes:/var/jenkins_home -v //var/run/docker.sock:/var/run/docker.lock -p 8080:8080 -p 50000:50000 aguexitoso/jenkins:v2236
 ```
 
 
