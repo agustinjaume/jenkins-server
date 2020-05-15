@@ -125,7 +125,7 @@ Ejemplos de como desplegar dos servidores con configuraciones separadas.
 Linux
 ```
 docker run -d -v jenkins_home_vX:/var/jenkins_home -p 8080:8080 -p 50000:50000 jenkins:vX
-docker run -d -v jenkins_home_v2223b:/var/jenkins_home -v /var/run/docker.sock:/var/run/docker.sock -p 8080:8080 -p 50000:50000 jenkins:v2236
+docker run --name jenkins -d -v jenkins_home_v2236:/var/jenkins_home -v /var/run/docker.sock:/var/run/docker.sock -p 8080:8080 -p 50000:50000 jenkins:v2236
 ```
 
 
