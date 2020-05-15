@@ -118,6 +118,13 @@ docker build -t "jenkins:vX" .
 docker build -t "jenkins:v2236" .
 ```
 
+# Push a docker hub
+```
+docker login
+docker tag efd4574e8201 aguexitoso/jenkins:v2236
+docker push  aguexitoso/jenkins:v2236
+```
+
 # Desplegar un contenedor con Jenkins server con la imagen previamente desplegada
 
 Ejemplos de como desplegar dos servidores con configuraciones separadas.
