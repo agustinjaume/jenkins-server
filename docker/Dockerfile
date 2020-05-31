@@ -11,6 +11,12 @@ RUN curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key --keyri
 RUN apt-get update && apt-get install google-cloud-sdk -y
 RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
 RUN chmod +x ./kubectl
+RUN wget https://releases.hashicorp.com/terraform/0.12.26/terraform_0.12.26_linux_amd64.zip
+RUN unzip terraform_0.12.26_linux_amd64.zip
+RUN mv terraform /usr/local/bin/terraform
+RUN curl https://packages.cloud.google.com/apt/doc/apt-key.gpg |  apt-key --keyring /usr/share/keyrings/cloud.google.gpg add -
+RUN apt-get update && apt-get install google-cloud-sdk -y
+RUN apt-get install google-cloud-sdk-app-engine-java -y
 RUN mv ./kubectl /usr/local/bin
 RUN pip install  cryptography==2.7
 RUN pip3 install  cryptography==2.7
@@ -60,15 +66,11 @@ RUN curl -fsSL https://github.com/krallin/tini/releases/download/${TINI_VERSION}
   && gpg --verify /sbin/tini.asc \
   && rm -rf /sbin/tini.asc /root/.gnupg \
   && chmod +x /sbin/tini
-
-# jenkins version being bundled in this docker image
 ARG JENKINS_VERSION
-ENV JENKINS_VERSION ${JENKINS_VERSION:-2.236} 
-# ${JENKINS_VERSION:-2.176.2}
-
+ENV JENKINS_VERSION ${JENKINS_VERSION:-2.238} 
 # jenkins.war checksum, download will be validated using it  https://updates.jenkins-ci.org/download/war/
 #ARG JENKINS_SHA=33a6c3161cf8de9c8729fd83914d781319fd1569acf487c7b1121681dba190a5
-ARG JENKINS_SHA=1103efaec5d3d364430e9d02bd7d5d7dfc813c2c4c97a8715ea847734d879266
+ARG JENKINS_SHA=a4407b10158acbf2be13a55ef6b4ca0e894c3628e0adc1464088768b5615f7b5
 # Can be used to customize where jenkins.war get downloaded from
 ARG JENKINS_URL=https://repo.jenkins-ci.org/public/org/jenkins-ci/main/jenkins-war/${JENKINS_VERSION}/jenkins-war-${JENKINS_VERSION}.war
 
