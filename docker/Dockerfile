@@ -5,24 +5,25 @@ RUN apt-get update && apt-get upgrade -y && apt-get install -y git curl && curl 
 RUN apt-get update
 RUN apt-get install -y  python3
 RUN apt-get install -y  python-pip python3-pip
-RUN apt-get install -y virtualenv  nano
+RUN apt-get install -y virtualenv  nano  apt-utils
 RUN echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] http://packages.cloud.google.com/apt cloud-sdk main" | tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
 RUN curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key --keyring /usr/share/keyrings/cloud.google.gpg add -
 RUN apt-get update && apt-get install google-cloud-sdk -y
+RUN apt-get install google-cloud-sdk-app-engine-java -y
+
 RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
 RUN chmod +x ./kubectl
+RUN mv ./kubectl /usr/local/bin
+
 RUN wget https://releases.hashicorp.com/terraform/0.12.26/terraform_0.12.26_linux_amd64.zip
 RUN unzip terraform_0.12.26_linux_amd64.zip
 RUN mv terraform /usr/local/bin/terraform
-RUN curl https://packages.cloud.google.com/apt/doc/apt-key.gpg |  apt-key --keyring /usr/share/keyrings/cloud.google.gpg add -
-RUN apt-get update && apt-get install google-cloud-sdk -y
-RUN apt-get install google-cloud-sdk-app-engine-java -y
-RUN mv ./kubectl /usr/local/bin
+
 RUN pip install  cryptography==2.7
 RUN pip3 install  cryptography==2.7
 RUN apt-get install -y software-properties-common
 RUN apt-get install -y awscli
-RUN pip3 install ansible==2.5.0
+RUN pip3 install ansible==2.9.0
 RUN pip3 install hvac
 RUN pip3 install boto
 RUN echo "root:root" | chpasswd
