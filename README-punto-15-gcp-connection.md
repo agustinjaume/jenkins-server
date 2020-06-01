@@ -1,4 +1,4 @@
-# Curso de JENKINS - Conexión y gestión a Google Cloud
+# Curso de JENKINS - Conexión y gestión con Google Cloud
 
 En este video una buena práctica para poder conectarnos a nuestra respectiva nube y proyecto en la nube Google.
 Tambien os contare una práctica que encontré configurada en el pasado  y no recomiendo por temas de seguridad, evaluaremos sus pros y contras
