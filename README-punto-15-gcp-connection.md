@@ -10,8 +10,8 @@ Tambien os contare una práctica que encontré configurada en el pasado  y no re
 
 - Cuenta en GCP ( free tier) o con saldo suficiente para hacer estas pruebas
 - 2 cuentas de servicio 
-  - service-account-total-control Owner                       Full access to all resources.
-  - service-account-view-network  Network Management Viewer   Read-only access to Network Management resources.
+  - service-account-total-control                Owner                       Full access to all resources.
+  - service-account-visitor                     Viewer                             access to pub sub.
 - Jenkins server y conceptos de pipelines
 - Código de Pipeline declarativo
 
@@ -54,7 +54,7 @@ https://cloud.google.com/iam/docs/creating-managing-service-accounts?hl=es
 
 ### Pipeline que usaremos 
 
-
+#### Service account service-account-total-control
 ```
 pipeline {
     agent any
@@ -62,8 +62,8 @@ pipeline {
     environment {
         GOOGLE_PROJECT_ID = "ivory-honor-272915" 
         GOOGLE_PROJECT_NAME = "Proyecto-ideas-extraordinarias"
-        GOOGLE_APPLICATION_CREDENTIALS = credentials('service-account-jenkins-visita')
-        GOOGLE_CLOUD_KEYFILE_JSON = credentials('service-account-jenkins-visita')
+        GOOGLE_APPLICATION_CREDENTIALS = credentials('service-account-total-control')
+        GOOGLE_CLOUD_KEYFILE_JSON = credentials('service-account-total-control')
     }
     
     stages{
@@ -82,12 +82,55 @@ pipeline {
                 sh("gcloud auth activate-service-account --key-file=${GOOGLE_APPLICATION_CREDENTIALS}")
                 sh 'gcloud config set project ${GOOGLE_PROJECT_ID}'
                 sh '''
-                  gcloud compute networks list
+                  gcloud pubsub topics list
                   gcloud projects list
-                  
+                  gcloud compute networks list
                 '''
             } //steps
         }  //stage
+    
+      
+   }  // stages
+} //pipeline
+
+```
+
+#### Service account service-account-visitor
+```
+pipeline {
+    agent any
+    options {disableConcurrentBuilds()}
+    environment {
+        GOOGLE_PROJECT_ID = "ivory-honor-272915" 
+        GOOGLE_PROJECT_NAME = "Proyecto-ideas-extraordinarias"
+        GOOGLE_APPLICATION_CREDENTIALS = credentials('service-account-visitor')
+        GOOGLE_CLOUD_KEYFILE_JSON = credentials('service-account-visitor')
+    }
+    
+    stages{
+        
+        stage('clean workspaces -----------') { 
+            steps {
+              cleanWs()
+              sh 'env'
+            } //steps
+        }  //stage
+
+        
+        stage("Google Cloud connection -----------------"){
+            steps {
+                
+                sh("gcloud auth activate-service-account --key-file=${GOOGLE_APPLICATION_CREDENTIALS}")
+                sh 'gcloud config set project ${GOOGLE_PROJECT_ID}'
+                sh '''
+                  gcloud pubsub topics list
+                  gcloud projects list
+                  gcloud compute networks list
+                '''
+            } //steps
+        }  //stage
+    
+      
    }  // stages
 } //pipeline
 
