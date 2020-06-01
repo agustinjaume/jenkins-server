@@ -10,8 +10,8 @@ Tambien os contare una práctica que encontré configurada en el pasado  y no re
 
 - Cuenta en GCP ( free tier) o con saldo suficiente para hacer estas pruebas
 - 2 cuentas de servicio 
-  - service-account-total-control Network Management Viewer   Read-only access to Network Management resources.
-  - service-account-view-network  Owner      Full access to all resources.
+  - service-account-total-control Owner                       Full access to all resources.
+  - service-account-view-network  Network Management Viewer   Read-only access to Network Management resources.
 - Jenkins server y conceptos de pipelines
 - Código de Pipeline declarativo
 
