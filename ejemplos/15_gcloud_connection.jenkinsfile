@@ -1,0 +1,36 @@
+pipeline {
+    agent any
+    options {disableConcurrentBuilds()}
+    environment {
+        GOOGLE_PROJECT_ID = "ivory-honor-272915" 
+        GOOGLE_PROJECT_NAME = "Proyecto-ideas-extraordinarias"
+        GOOGLE_APPLICATION_CREDENTIALS = credentials('service-account-jenkins-visita')
+        GOOGLE_CLOUD_KEYFILE_JSON = credentials('service-account-jenkins-visita')
+    }
+    
+    stages{
+        
+        stage('clean workspaces -----------') { 
+            steps {
+              cleanWs()
+              sh 'env'
+            } //steps
+        }  //stage
+
+        
+        stage("Google Cloud connection -----------------"){
+            steps {
+                
+                sh("gcloud auth activate-service-account --key-file=${GOOGLE_APPLICATION_CREDENTIALS}")
+                sh 'gcloud config set project ${GOOGLE_PROJECT_ID}'
+                sh '''
+                  gcloud compute networks list
+                  gcloud projects list
+                  
+                '''
+            } //steps
+        }  //stage
+    
+      
+   }  // stages
+} //pipeline
