@@ -3,8 +3,18 @@
 En este video realizaremos el despliegue de infraetructura como codigo con ayuda de Terraform, en un proyecto de google cloud.
 Es recomendable ver el video anterior de "Conexion con Google Cloud desde Jenkins" que podras encontrar en la lista de videos publicados de Jenkins.
 
-<img src="./imagenes/jenkins-gcloud-3-gcp-infra-despliegue.png" alt="Kitten" title="A cute kitten" width="70%" height="70%" />
+<img src="./imagenes/jenkins-gcloud-3-gcp-infra-terraform.png" alt="Kitten" title="A cute kitten" width="70%" height="70%" />
 
+### Terraform con google cloud 
+
+https://www.terraform.io/docs/providers/google/guides/getting_started.html
+
+Para podes desplegar infraestructura como codigo desde nuestros ordenadores o instancias mecesitaremos asignarle credenciales.
+En nuestro caso asignaremos el contenido del fichero que contiene nuestro service_account.json en la variable de entorno GOOGLE_APPLICATION_CREDENTIALS
+
+```
+export GOOGLE_APPLICATION_CREDENTIALS={{path}}
+```
 
 ### Componentes necesarios 
 
