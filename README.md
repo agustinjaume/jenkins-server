@@ -115,10 +115,10 @@ RUN echo "root:root" | chpasswd
 # Creacion de la imagen con las modificaciones 
 ```
 docker build -t "jenkins:vX" .
-docker build -t "jenkins:v2238" .   ( en localhost)
-docker  tag  jenkins:v2238  aguexitoso/jenkins:v2238  ( para subir a registro publico ) 
+docker build -t "jenkins:v2243" .   ( en localhost)
+docker  tag  jenkins:v2243b  aguexitoso/jenkins:v2243b  ( para subir a registro publico ) 
 docker login 
-docker push aguexitoso/jenkins:v2238  
+docker push aguexitoso/jenkins:v2243b
 ```
 
 # Desplegar un contenedor con Jenkins server con la imagen previamente desplegada
@@ -128,7 +128,7 @@ Ejemplos de como desplegar dos servidores con configuraciones separadas.
 Linux
 ```
 docker run -d -v jenkins_home_vX:/var/jenkins_home -p 8080:8080 -p 50000:50000 jenkins:vX
-docker run --name jenkins -d -v jenkins_home_v2236:/var/jenkins_home -v /var/run/docker.sock:/var/run/docker.sock -p 8080:8080 -p 50000:50000 jenkins:v2238
+docker run --name jenkins -d -v jenkins_home_v2236:/var/jenkins_home -v /var/run/docker.sock:/var/run/docker.sock -p 8080:8080 -p 50000:50000 jenkins:v2243
 ```
 Windows
 ```
