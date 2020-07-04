@@ -87,3 +87,7 @@ internal variables:
 sys.argv[1] sys.argv[2] sys.argv[3]
 ```
 
+### Configuración Jenkins 
+
+git            https://github.com/agustinjaume/jenkins-server
+jenkinsfile 
