@@ -2,7 +2,6 @@
 import sys, shutil, os
 from jinja2 import Template, Environment, FileSystemLoader
 
-
 # variables
 
 app_name= sys.argv[1]
@@ -20,7 +19,7 @@ to_app = app_name + "-deployment.yaml"
 to_namespace = app_name + "-namespace.yaml"
 
 def template_app(app_name,app_label,app_version,docker_image,docker_name,port,environment,app_replicas):
-    # Configuracion y reemplazo de valores
+# Configuracion y reemplazo de valores
     env = Environment(loader=FileSystemLoader('')) # carpeta de template vacia
     template = env.get_template(from_app) # template
     output_from_parsed_template = template.render(
@@ -32,12 +31,12 @@ def template_app(app_name,app_label,app_version,docker_image,docker_name,port,en
         app_replicas=app_replicas
     )
 
-    # Print contenido modificado
+# Print contenido modificado
     print(output_from_parsed_template)
     if not os.path.exists(to_app):
         with open(to_app, 'w'): pass
 
-    # volcado de contenido
+# Volcado de contenido
     f = open(to_app,'w')
     print(output_from_parsed_template, file=f)
 
@@ -45,7 +44,7 @@ def template_app(app_name,app_label,app_version,docker_image,docker_name,port,en
 # TEMPLATE NAMESPACES
 def template_namespace(app_name,app_label,app_version,docker_image,environment):
 
-    # Configuracion y reemplazo de valores
+# Configuracion y reemplazo de valores
     env = Environment(loader=FileSystemLoader('')) # carpeta de template vacia
     template = env.get_template(from_namespace) # template
     output_from_parsed_template = template.render(
@@ -56,15 +55,16 @@ def template_namespace(app_name,app_label,app_version,docker_image,environment):
         environment=environment
     )
 
-    # Print contenido modificado
+# Print contenido modificado
     print(output_from_parsed_template)
     if not os.path.exists(to_namespace):
         with open(to_namespace, 'w'): pass
 
-    # volcado de contenido
+# Volcado de contenido
     f = open(to_namespace,'w')
     print(output_from_parsed_template, file=f)
 
-
+#Creando to_app = app_name + "-deployment.yaml"
+#Creando app_name + "-namespace.yaml"
 template_app(app_name,app_label,app_version,docker_image,docker_name,port,environment,app_replicas)
 template_namespace(app_name,app_label,app_version,docker_image,environment)

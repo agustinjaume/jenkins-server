@@ -10,7 +10,7 @@ pipeline {
         cleanWs()
         sh 'pwd' 
         sh 'ls -l'
-        sh 'python -u my_script.py'
+        sh 'python -u deployment_dinamic.py'
       } // steps
     } // stage
     
