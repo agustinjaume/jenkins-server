@@ -11,11 +11,9 @@ pipeline {
         sh 'pwd' 
         sh 'ls -l'
         sh 'python -u my_script.py'
-      }
-    }
-  }
-}
+      } // steps
+    } // stage
     
       
-   }  // stages
+  }  // stages
 } //pipeline
