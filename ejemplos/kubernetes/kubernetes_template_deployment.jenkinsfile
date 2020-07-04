@@ -1,45 +1,20 @@
 pipeline {
-    agent any
-    options {disableConcurrentBuilds()}
-    environment {
-/*         GOOGLE_PROJECT_ID = "ivory-honor-272915" 
-        GOOGLE_PROJECT_NAME = "Proyecto-ideas-extraordinarias"
-        GOOGLE_APPLICATION_CREDENTIALS = credentials('service-account-visitor')
-        GOOGLE_CLOUD_KEYFILE_JSON = credentials('service-account-visitor') */
-    }
-    parameters { 
+  agent { any }
+  parameters { 
       choice(name: 'ENTORNOS', choices: ['dev', 'pre', 'pro'], description: 'Seleccione el entorno a utilizar')
       choice(name: 'ACCION', choices: ['', 'plan-apply', 'destroy'], description: 'Seleccione el entorno a utilizar')
     }
-    stages{
-        
-        stage('clean workspaces -----------') { 
-            steps {
-              cleanWs()
-              sh 'env'
-            } //steps
-        }  //stage
-
-        stage("git clone code terraform"){
-            steps {
-                cleanWs()
-                sh 'pwd' 
-                sh 'ls -l'
-            } //steps
-        }  //stage   
-        
-/*     stage("Kubernetes connection test -----------------"){
-        steps {
-                
-                sh("gcloud auth activate-service-account --key-file=${GOOGLE_APPLICATION_CREDENTIALS}")
-                sh 'gcloud config set project ${GOOGLE_PROJECT_ID}'
-                sh '''
-                  gcloud pubsub topics list
-                  gcloud projects list
-                  gcloud compute networks list
-                '''
-            } //steps
-        }  //stage */
+  stages {
+    stage('build') {
+      steps {
+        cleanWs()
+        sh 'pwd' 
+        sh 'ls -l'
+        sh 'python -u my_script.py'
+      }
+    }
+  }
+}
     
       
    }  // stages
