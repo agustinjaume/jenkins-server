@@ -23,14 +23,6 @@ pipeline {
         stage("git clone code terraform"){
             steps {
                 cleanWs()
-                    checkout([$class: 'GitSCM', 
-                    branches: [[name: '*/master']], 
-                    doGenerateSubmoduleConfigurations: false, 
-                    extensions: [[$class: 'CleanCheckout']], 
-                    submoduleCfg: [], 
-                    userRemoteConfigs: [
-                        [url: 'git@github.com:agustinjaume/jenkins-server.git', credentialsId: '']
-                        ]])
                 sh 'pwd' 
                 sh 'ls -l'
             } //steps
