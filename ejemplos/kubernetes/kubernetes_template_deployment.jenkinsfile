@@ -9,7 +9,7 @@ pipeline {
       steps {
         sh 'pwd' 
         sh 'ls -l'
-       // sh 'python  deployment_dinamic.py'
+
       } // steps
     } // stage
 
@@ -26,6 +26,7 @@ pipeline {
                         ]])
                 sh 'pwd' 
                 sh 'ls -l'
+                sh 'python  ejemplos/kubernetes/deployment_dinamic.py'
             } //steps
     }  //stage  
       
