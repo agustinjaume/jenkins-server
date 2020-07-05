@@ -7,7 +7,6 @@ pipeline {
   stages {
     stage('build') {
       steps {
-        cleanWs()
         sh 'pwd' 
         sh 'ls -l'
         sh 'python  deployment_dinamic.py'
