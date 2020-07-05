@@ -1,7 +1,0 @@
-  
-kind: Namespace
-apiVersion: v1
-metadata:
-  name: app_web_ideas_extraordinarias
-  labels:
-    name: web_ideas
