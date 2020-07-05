@@ -9,7 +9,7 @@ pipeline {
       steps {
         sh 'pwd' 
         sh 'ls -l'
-        sh 'python  deployment_dinamic.py'
+       // sh 'python  deployment_dinamic.py'
       } // steps
     } // stage
 
