@@ -26,7 +26,8 @@ pipeline {
                         ]])
                 sh 'pwd' 
                 sh 'ls -l'
-                sh 'python  ejemplos/kubernetes-template-basic-concept/deployment_dinamic.py  "app_web_ideas_extraordinarias" "web_ideas" '
+                sh 'python --version'
+                sh 'python3  ejemplos/kubernetes-template-basic-concept/deployment_dinamic.py  "app_web_ideas_extraordinarias" "web_ideas" '
             } //steps
     }  //stage  
       
