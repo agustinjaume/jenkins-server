@@ -2,7 +2,7 @@ pipeline {
   agent any 
   parameters { 
       choice(name: 'ENTORNOS', choices: ['dev', 'pre', 'pro'], description: 'Seleccione el entorno a utilizar')
-      choice(name: 'ACCION', choices: ['', 'deployment', 'destroy'], description: 'Seleccione el entorno a utilizar')
+      choice(name: 'ACCION', choices: ['', 'deployment', 'rollback'], description: 'Seleccione el entorno a utilizar')
     }
   stages {
     stage('build') {
@@ -12,7 +12,22 @@ pipeline {
         sh 'python  deployment_dinamic.py'
       } // steps
     } // stage
-    
+
+    stage("git clone code "){
+            steps {
+                cleanWs()
+                    checkout([$class: 'GitSCM', 
+                    branches: [[name: '*/master']], 
+                    doGenerateSubmoduleConfigurations: false, 
+                    extensions: [[$class: 'CleanCheckout']], 
+                    submoduleCfg: [], 
+                    userRemoteConfigs: [
+                        [url: 'git@github.com:agustinjaume/jenkins-server.git', credentialsId: '']
+                        ]])
+                sh 'pwd' 
+                sh 'ls -l'
+            } //steps
+    }  //stage  
       
   }  // stages
 } //pipeline
