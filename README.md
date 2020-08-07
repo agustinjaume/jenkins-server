@@ -115,10 +115,10 @@ RUN echo "root:root" | chpasswd
 # Creacion de la imagen con las modificaciones 
 ```
 docker build -t "jenkins:vX" .
-docker build -t "jenkins:v2243" .   ( en localhost)
-docker  tag  jenkins:v2243b  aguexitoso/jenkins:v2243b  ( para subir a registro publico ) 
+docker build -t "jenkins:v2251" .   ( en localhost)
+docker  tag  jenkins:v2251  aguexitoso/jenkins:v2251 ( para subir a registro publico ) 
 docker login 
-docker push aguexitoso/jenkins:v2243b
+docker push aguexitoso/jenkins:v2251
 ```
 
 # Desplegar un contenedor con Jenkins server con la imagen previamente desplegada
@@ -132,7 +132,7 @@ docker run --name jenkins -d -v jenkins_home_v2236:/var/jenkins_home -v /var/run
 ```
 Windows
 ```
-docker run -d --name jenkins -v C:/Users/agustin/Desktop/jenkins_homes:/var/jenkins_home -v //var/run/docker.sock:/var/run/docker.lock -p 8080:8080 -p 50000:50000 aguexitoso/jenkins:v2238
+docker run -d --name jenkins -v C:/Users/agustin/Desktop/jenkins_homes:/var/jenkins_home -v //var/run/docker.sock:/var/run/docker.lock -p 8080:8080 -p 50000:50000 aguexitoso/jenkins:v2251
 ```
 
 

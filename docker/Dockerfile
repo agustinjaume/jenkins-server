@@ -1,7 +1,6 @@
 FROM openjdk:8-jdk-stretch
 
 # Install git lfs on Debian stretch per https://github.com/git-lfs/git-lfs/wiki/Installation#debian-and-ubuntu
-#RUN apt-get update && apt-get upgrade -y && apt-get install -y git curl && curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | bash && apt-get install -y git-lfs && git lfs install && rm -rf /var/lib/apt/lists/*
 RUN apt-get update && apt-get upgrade -y && apt-get install -y git curl && curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | bash && apt-get install -y git-lfs && git lfs install && rm -rf /var/lib/apt/lists/*
 
 RUN apt-get update
@@ -70,10 +69,10 @@ RUN curl -fsSL https://github.com/krallin/tini/releases/download/${TINI_VERSION}
   && rm -rf /sbin/tini.asc /root/.gnupg \
   && chmod +x /sbin/tini
 ARG JENKINS_VERSION
-ENV JENKINS_VERSION ${JENKINS_VERSION:-2.243} 
+ENV JENKINS_VERSION ${JENKINS_VERSION:-2.251} 
 # jenkins.war checksum, download will be validated using it  https://updates.jenkins-ci.org/download/war/
 #ARG JENKINS_SHA=33a6c3161cf8de9c8729fd83914d781319fd1569acf487c7b1121681dba190a5
-ARG JENKINS_SHA=b63815fcc5fe9738978462d8ab7659f5f8fd6576a27ce94da57365a3cafb80a4
+ARG JENKINS_SHA=31091445f4c81bd20f2aa51c45d937089cb6d50991d99ec953e4deb44ffa7c50
 # Can be used to customize where jenkins.war get downloaded from
 ARG JENKINS_URL=https://repo.jenkins-ci.org/public/org/jenkins-ci/main/jenkins-war/${JENKINS_VERSION}/jenkins-war-${JENKINS_VERSION}.war
 
