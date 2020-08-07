@@ -1,0 +1,7 @@
+  
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: {{ app_name }}
+  labels:
+    name: {{ app_label }}
