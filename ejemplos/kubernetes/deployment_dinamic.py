@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import sys, shutil, os
 from jinja2 import Template, Environment, FileSystemLoader
-
+from kubernetes import client, config, watch
 # variables
 
 app_name= sys.argv[1]
@@ -64,7 +64,32 @@ def template_namespace(app_name,app_label,app_version,docker_image,environment):
     f = open(to_namespace,'w')
     print(output_from_parsed_template, file=f)
 
+    
+
 #Creando to_app = app_name + "-deployment.yaml"
 #Creando app_name + "-namespace.yaml"
 template_app(app_name,app_label,app_version,docker_image,docker_name,port,environment,app_replicas)
 template_namespace(app_name,app_label,app_version,docker_image,environment)
+
+def check(app_name):
+    config.load_kube_config()
+    v1 = client.CoreV1Api()
+    count = 10
+    w = watch.Watch()
+    for event in w.stream(v1.list_namespace, timeout_seconds=5):
+        print( event['object'].metadata.name)
+        if event['object'].metadata.name == app_name:
+            print("el namespaces existe")
+            result = "ok"
+            break 
+        else:
+            print("no existe")
+            result = "ko"
+        count -= 1
+        if not count:
+            w.stop()
+    print("Finished namespace stream.")
+    return result
+
+result = check(app_name)
+print(result)

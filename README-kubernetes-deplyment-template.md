@@ -78,7 +78,7 @@ python deployment_dinamic.py app_name app_label app_version docker_image docker_
 Run:
 
 ```
-python deployment_dinamic.py "app_web_ideas_extraordinarias" "web_ideas" "v:3.0" "nginx:1.15.4" "nginx" "80" "dev"
+python deployment_dinamic.py "app_web_ideas_extraordinarias" "web_ideas" "v:3.0" "nginx:1.15.4" "nginx" "80" "dev" "2"
 ```
 
 internal variables: 
@@ -86,6 +86,10 @@ internal variables:
 ```
 sys.argv[1] sys.argv[2] sys.argv[3]
 ```
+### Componentes 
+
+pip install jinja2
+pip install kubernetes
 
 ### Configuración Jenkins 
 
