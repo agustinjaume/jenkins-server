@@ -7,7 +7,13 @@ pipeline {
     stages {
         stage('Example') {
             steps {
-                echo "${params.Greeting} World!"
+                 sh '''#!/bin/sh
+                 echo "${params.Greeting} World!"
+                 echo "pwd"
+                 pwd
+                 echo "ls -la"
+                 ls -la
+                 '''
             }
         }
     }
